@@ -2,7 +2,8 @@ const fs = require('fs');
 const http = require('http');
 
 const server = http.createServer((req, res) => {
-    if (req.url == '/data' && req.method == 'GET') {
+    // Serve data.json on both '/' and '/data'
+    if ((req.url == '/' || req.url == '/data') && req.method == 'GET') {
         fs.readFile('data.json', 'utf-8', (err, data) => {
             if (err) {
                 res.writeHead(500, { 'Content-Type': 'application/json' });
