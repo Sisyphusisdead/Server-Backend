@@ -14,7 +14,7 @@ const server = http.createServer((req, res) => {
             }
         });
     }
-    else if(req.url == '/data' && req.method == 'POST'){
+    else if((req.url == '/' || req.url == '/data') && req.method == 'POST'){
         let body = '';
         req.on('data', (chunk) => {
             body += chunk;
